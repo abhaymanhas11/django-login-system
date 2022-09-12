@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>loginform</title>
+    <style>
+        .errorlist nonfield.li{
+        color:red;
+        }
+    </style>
+</head>
+<body>
+<form action="" method="post"  novalidate >
+
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+      {% for error in from.non_field_errors %}
+        <p class="error">{{error}}</p>
+      {% endfor %}
+    {% endif %}
+
+    {{form.as_p}}
+
+    <button type="submit"> Login </button>
+</form>
+<a href="{% url 'signup' %}">Signup</a>
+</body>
+</html>
